@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Full-Time Positions | Martin Baar</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div id="page" class="page">
+
+    <!-- Header -->
+    <header class="site-header alt-header">
+      <div class="header-inner">
+        <div class="logo"><a href="index.html">Martin Baar</a></div>
+        <nav class="main-nav" aria-label="Main navigation">
+          <ul>
+            <li><a href="fulltime.html" class="nav-link active">Full-time</a></li>
+            <li><a href="internships.html" class="nav-link">Internships</a></li>
+            <li><a href="projects.html" class="nav-link">Projects</a></li>
+            <li><a href="certifications.html" class="nav-link">Certifications</a></li>
+
+            <li class="nav-divider" aria-hidden="true"></li>
+
+            <li><a href="CV_Martin_Baar.pdf" class="nav-link" download>Download CV</a></li>
+            <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            <li>
+              <button id="theme-toggle" class="theme-toggle" aria-pressed="false" title="Toggle dark mode">🌙</button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Fulltime Section -->
+    <main>
+      <section class="projects section" data-animate>
+        <div class="container narrow">
+          <h2>Projects & Volunteering</h2>
+          <p class="lead muted">Volunteering and other personal initiatives.</p>
+        </div>
+
+        <!-- Project 1 -->
+        <div class="project-block">
+          <div class="project-grid">
+            <!-- Carousel -->
+            <div class="carousel" data-interval="5000">
+              <img src="PVP1I1.png" alt="Project 1 - Image 1" class="carousel-image visible">
+              <img src="PVP1I2.JPG" alt="Project 1 - Image 2" class="carousel-image">
+              <img src="PVP1I3.JPG" alt="Project 1 - Image 3" class="carousel-image">
+              <img src="PVP1I4.JPG" alt="Project 1 - Image 4" class="carousel-image">
+              <img src="PVP1I5.JPG" alt="Project 1 - Image 5" class="carousel-image">
+            </div>
+
+            <!-- Info -->
+            <div class="project-info">
+              <h3> Marine biologiste and research assistant </h3>
+              <p class="meta"> Global Reef — January > March 2025</p>
+              <p>Detailed description of the role, responsibilities, challenges, and key achievements. Focus on impact and value delivered.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-block alt-bg">
+          <div class="project-grid">
+            <div class="carousel" data-interval="5000">
+              <img src="PVP2I1.jpg" alt="Project 2 - Image 1" class="carousel-image visible">
+              <img src="PVP2I2.jpeg" alt="Project 2 - Image 2" class="carousel-image">
+              <img src="PVP2I3.jpeg" alt="Project 2 - Image 3" class="carousel-image">
+              <img src="PVP2I4.jpeg" alt="Project 2 - Image 4" class="carousel-image">
+              <!-- <img src="img/project2-5.jpg" alt="Project 2 - Image 5" class="carousel-image"> -->
+            </div> 
+
+            <div class="project-info">
+              <h3>Ticketing and client service assistant</h3>
+              <p class="meta"> Spa Grand Prix — Duration</p>
+              <p>Description of responsibilities, team collaboration, and successful results achieved through innovative approaches.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-block">
+          <div class="project-grid">
+            <div class="carousel" data-interval="5000">
+              <img src="img/project3-1.jpg" alt="Project 3 - Image 1" class="carousel-image visible">
+              <img src="img/project3-2.jpg" alt="Project 3 - Image 2" class="carousel-image">
+              <img src="img/project3-3.jpg" alt="Project 3 - Image 3" class="carousel-image">
+              <img src="img/project3-4.jpg" alt="Project 3 - Image 4" class="carousel-image">
+              <img src="img/project3-5.jpg" alt="Project 3 - Image 5" class="carousel-image">
+            </div>
+
+            <div class="project-info">
+              <h3>Position Title 3</h3>
+              <p class="meta">Company Name — Duration</p>
+              <p>Description of the role, responsibilities, and measurable outcomes that demonstrate career growth and expertise.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-block alt-bg">
+          <div class="project-grid">
+            <div class="carousel" data-interval="5000">
+              <img src="img/project4-1.jpg" alt="Project 4 - Image 1" class="carousel-image visible">
+              <img src="img/project4-2.jpg" alt="Project 4 - Image 2" class="carousel-image">
+              <img src="img/project4-3.jpg" alt="Project 4 - Image 3" class="carousel-image">
+              <img src="img/project4-4.jpg" alt="Project 4 - Image 4" class="carousel-image">
+              <img src="img/project4-5.jpg" alt="Project 4 - Image 5" class="carousel-image">
+            </div>
+
+            <div class="project-info">
+              <h3>Ticketing and client service assistant</h3>
+              <p class="meta"> Spa Grand Prix — Duration</p>
+              <p>Description of responsibilities, team collaboration, and successful results achieved through innovative approaches.</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </section>
+
+      <!-- Back to Home Button -->
+      <div class="container center" style="margin-top:2rem;">
+      <a href="index.html" class="btn ripple">← Back to Home</a>
+    </div>
+
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+      <button class="lightbox-close" aria-label="Close">✕</button>
+      <div class="lightbox-content">
+        <button class="lb-prev" aria-label="Previous">‹</button>
+        <div class="lb-image-wrap">
+          <img id="lb-image" src="" alt="">
+          <div id="lb-caption"></div>
+        </div>
+        <button class="lb-next" aria-label="Next">›</button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container center">
+        <p>© 2025 Martin Baar. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

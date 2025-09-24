@@ -1,83 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Martin Baar | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Martin Baar | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
 </head>
 <body>
-    <!-- Navigation -->
-    <header>
-        <nav>
-            <div class="logo">Martin Baar</div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#download">Download</a></li>
-            </ul>
+  <div id="page" class="page">
+
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="logo"><a href="index.html">Martin Baar</a></div>
+        <nav class="main-nav" aria-label="Main navigation">
+          <ul>
+            <li><a href="fulltime.html" class="nav-link">Full-time</a></li>
+            <li><a href="internships.html" class="nav-link">Internships</a></li>
+            <li><a href="projects.html" class="nav-link">Projects</a></li>
+            <li><a href="certifications.html" class="nav-link">Certifications</a></li>
+
+            <li class="nav-divider" aria-hidden="true"></li>
+
+            <li><a href="CV_Martin_Baar.pdf" class="nav-link" download>Download CV</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+            <li>
+              <button id="theme-toggle" class="theme-toggle" aria-pressed="false" title="Toggle dark mode">🌙</button>
+            </li>
+          </ul>
         </nav>
+      </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Hello, I'm <span>Martin Baar</span></h1>
-            <p>I'm a young professional with a MSc in Strategic Managment. I like creating new things </p>
-            <a href="#download" class="btn">Download Resume</a>
+    <!-- Hero -->
+    <section class="hero section center" id="home" data-animate>
+     <!-- <div class="hero-inner hero-centered"> (place holder between Hi and 1st sentence) -->
+        <h1>Hello and Welcome to my Webpage!</h1>
+        <h2> My name is <span class="accent">Martin Baar</span>. </h2>
+          
+        <p> I decided to built this website as both a personal challenge to sharpen my skills and as a space where you can get to know me better.</p>
+          
+        <p> This space is an exemplification of my programming skills and my ability to collaborate with <span class="ai-highlight">AI</span> to deliver strong, creative results.</p>
+        <br>
+        <br>
+        <p> ➤ Feel free to explore the different sections and don’t hesitate to reach out if you have questions, ideas, or opportunities to connect.</p>
+    
+      </div>
+    </section>
+
+    <!-- Intro (with portrait + paragraph) -->
+    <section id="intro" class="intro section" data-animate>
+      <div class="intro-grid container">
+        <div class="intro-text">
+          <h2>A short introduction:</h2>
+          <p>
+            Standing still has never been an option for me. With curiosity, resilience, and reliability at the core of who I am, I’m committed to pushing boundaries to find my spot in the automotive industry.
+          </p>
+          <p>
+            Over the past years, I’ve studied, worked and travelled across Belgium, the Netherlands, Germany, and Southeast Asia. These experiences have shaped me into someone who values different perspectives and thrives in international environments. I love being part of diverse teams where ideas clash, evolve, and ultimately create stronger solutions.
+          </p>
+          <p>
+            Outside of work, you’ll find me traveling, diving, taking photos, or on the basketball court. I like pushing myself out of my comfort zone, whether it’s learning German, experimenting with code, or simply putting myself in situations where growth is the only option.
+          </p>
+          <p> 
+            For me, life isn’t about waiting for the right opportunity. It’s about working, moving, and positioning yourself so that opportunities become inevitable.
+          </p>     
+          <p class="quote">"Create your own luck"</p>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <h2>About Me</h2>
-        <p>MSc Strategic Management Graduate | Driven personality always striving for growth
-
-I am passionate about driving operational excellence and fostering continuous improvement. My experiences in supply chain management and business development have strengthened my enthusiasm for optimizing processes and collaborating with diverse teams. I thrive on turning challenges into growth opportunities and believe that every project is a chance to learn.
-
-Having lived and studied across the world, I developed a global perspective and a high appreciation for working and living in an international environment. </p>
-
-        <p> Key Qualities: Ambitious | Disciplined | Fast Learner | Trustworthy | Open minded </p>
-        <p>„Create your own luck“</p>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <h2>Skills & Projects</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>Web Development</h3>
-                <p>HTML, CSS, JavaScript, React, Node.js</p>
-            </div>
-            <div class="card">
-                <h3>Design</h3>
-                <p>Figma, Photoshop, UI/UX Design</p>
-            </div>
-            <div class="card">
-                <h3>Projects</h3>
-                <p>Interactive websites, web apps, and design prototypes</p>
-            </div>
+        <div class="intro-photo">
+          <img src="portraithero.jpg" alt="Portrait of Martin Baar" class="portrait">
         </div>
+      </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <!-- Categories -->
+    <section id="categories" class="categories section" data-animate>
+      <div class="container">
+        <h2>Activity</h2>
+        <p class="sub">Explore the areas I focus(ed) on — click any tile to read more.</p>
+        <div class="cards categories-grid">
+          <article class="card tilt">
+            <h3>Full-time</h3>
+            <p class="muted">Full time industry roles and long-term projects. </p>
+            <a href="fulltime.html" class="btn small ripple">Read More</a>
+          </article>
+          <article class="card tilt">
+            <h3>Internships</h3>
+            <p class="muted">Short placements and learning experiences.</p>
+            <a href="internships.html" class="btn small ripple">Read More</a>
+          </article>
+          <article class="card tilt">
+            <h3>Projects</h3>
+            <p class="muted">Volunteering and other personal initiatives.</p>
+            <a href="projects.html" class="btn small ripple">Read More</a>
+          </article>
+          <article class="card tilt">
+            <h3>Certifications</h3>
+            <p class="muted">Professional certificates and upskilling credentials.</p>
+            <a href="certifications.html" class="btn small ripple">Read More</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+<form
+  action="https://formspree.io/f/xkgvlvqv"
+  method="POST"
+     id="contact" class="contact section" data-animate>
+      <div class="container narrow">
         <h2>Contact Me</h2>
-        <form id="contact-form">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-            <button type="submit">Send</button>
+        <form id="contact-form" class="contact-form">
+          <div class="form-group">
+            <input type="text" name="name" id="name" required>
+            <label for="name">Your Name</label>
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" id="email" required>
+            <label for="email">Your Email</label>
+          </div>
+          <div class="form-group">
+            <textarea name="message" id="message" rows="5" required></textarea>
+            <label for="message">Your Message</label>
+          </div>
+          <button type="submit" class="btn ripple">Send</button>
         </form>
-        <p id="form-message"></p>
+        <p id="form-message" aria-live="polite"></p>
+      </div>
+</form>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Your Name. All rights reserved.</p>
+    <footer class="site-footer">
+      <div class="container center">
+        <p>© 2025 Martin Baar. All rights reserved.</p>
+      </div>
     </footer>
-
-    <script src="script.js"></script>
+  </div>
 </body>
 </html>
