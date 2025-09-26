@@ -247,9 +247,9 @@ function openLightbox(items, startIndex=0){
    -------------------------- */
 window.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.stars').forEach(starBlock => {
-    const rating = parseInt(starBlock.dataset.rating, 10) || 0;
+    const rating = parseFloat(starBlock.dataset.rating) || 0;;
     const percent = (rating / 5) * 100;
-    starBlock.style.setProperty('--percent', percent / 100);
+    starBlock.style.setProperty('--percent', percent);
   });
 });
 
