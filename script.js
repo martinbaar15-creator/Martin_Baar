@@ -177,7 +177,7 @@ function initCarousels(){
       idx = (idx+1) % imgs.length; 
       show(idx); 
     }
-
+    
     // pause on hover
     carousel.addEventListener('mouseenter', ()=> clearInterval(timer));
     carousel.addEventListener('mouseleave', ()=> timer=setInterval(next, interval));
