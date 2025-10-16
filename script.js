@@ -151,13 +151,43 @@ function initTilt(){
 }
 
 /* --------------------------
-   Contact form feedback (local only)
+   Contact form (AJAX + auto-clear)
    -------------------------- */
 function initContactForm(){
   const form = document.getElementById('contact-form');
   const msg = document.getElementById('form-message');
   if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Build form data
+    const formData = new FormData(form);
+    msg.textContent = "Sending…";
+    msg.style.color = '';
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method || "POST",
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        form.reset(); // clear fields
+        msg.textContent = "Thank you — your message has been sent!";
+        msg.style.color = 'darkbrown';
+      } else {
+        msg.textContent = "Oops — something went wrong. Please try again.";
+        msg.style.color = 'red';
+      }
+    } catch (error) {
+      msg.textContent = "Network error — please try again later.";
+      msg.style.color = 'red';
+    }
+  });
 }
+
 /* --------------------------
    Carousels (auto-rotate + click-to-lightbox)
    -------------------------- */
@@ -191,7 +221,6 @@ function initCarousels(){
     });
   });
 }
-
 
 /* --------------------------
    Lightbox (fullscreen gallery)
@@ -252,5 +281,3 @@ window.addEventListener('DOMContentLoaded', () => {
     starBlock.style.setProperty('--percent', percent);
   });
 });
-
-
