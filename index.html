@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Martin Baar | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
 </head>
@@ -25,8 +26,15 @@
 
             <li class="nav-divider" aria-hidden="true"></li>
 
-            <li><a href="CV_Martin_Baar.pdf" class="nav-link" download>Download CV</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
+            <li><a href="CV_Martin Baar.pdf" class="nav-link" download>Download CV</a></li>
+            <li class="dropdown">
+              <button class="nav-link dropdown-toggle">Contact ▾</button>
+              <ul class="dropdown-menu">
+                <li><a href="index.html#contact">Send me a message</a></li>
+                <li><a href="https://www.instagram.com/martin_baar/" target="_blank">Check Instagram</a></li>
+                <li><a href="https://www.linkedin.com/in/martinbaar15" target="_blank">Check LinkedIn</a></li>
+              </ul>
+            </li>
             <li>
               <button id="theme-toggle" class="theme-toggle" aria-pressed="false" title="Toggle dark mode">🌙</button>
             </li>
@@ -68,12 +76,15 @@
           <p> 
             For me, life isn’t about waiting for the right opportunity. It’s about working, moving, and positioning yourself so that opportunities become inevitable.
          </p>     
-          <p class="quote">"Create your own luck"</p>
         </div>
         <div class="intro-photo">
-          <img src="portraithero.jpg" alt="Portrait of Martin Baar" class="portrait">
+          <img src="./images/portraithero.jpg" alt="Portrait of Martin Baar" class="portrait">
         </div>
       </div>
+    </section>
+
+    <section id="quote" class="spacingclassy">  
+     <p class="quote">"Create your own luck"</p>
     </section>
 
     <!-- Categories -->
@@ -82,35 +93,54 @@
         <h2>Activity</h2>
         <p class="sub">Explore the areas I focus(ed) on — click any tile to read more.</p>
         <div class="cards categories-grid">
+
+        
           <article class="card tilt">
             <h3>Full-time</h3>
             <p class="muted">Full time industry roles and long-term projects. </p>
-            <a href="fulltime.html" class="btn small ripple">Read More</a>
+            <a href="fulltime.html" class="btn read-more small ripple" aria-label="Read more about Full-time">
+              <span class="label">Read More</span>
+            </a>
           </article>
+
           <article class="card tilt">
             <h3>Internships</h3>
             <p class="muted">Short term placements and learning experiences.</p>
-            <a href="internships.html" class="btn small ripple">Read More</a>
+            <a href="internships.html" class="btn read-more small ripple" aria-label="Read more about Full-time">
+              <span class="label">Read More</span>
+            </a>
           </article>
+
           <article class="card tilt">
             <h3>Projects</h3>
             <p class="muted">Volunteering and other personal initiatives.</p>
-            <a href="projects.html" class="btn small ripple">Read More</a>
+            <a href="projects.html" class="btn read-more small ripple" aria-label="Read more about Full-time">
+              <span class="label">Read More</span>
+            </a>
           </article>
+
           <article class="card tilt">
             <h3>Certifications</h3>
             <p class="muted">Professional certificates and upskilling credentials.</p>
-            <a href="certifications.html" class="btn small ripple">Read More</a>
+            <a href="certifications.html" class="btn read-more small ripple" aria-label="Read more about Full-time">
+              <span class="label">Read More</span>
+            </a>
           </article>
+
           <article class="card tilt">
             <h3>Education</h3>
             <p class="muted">Programmes followed in different Universities. </p>
-            <a href="studies.html" class="btn small ripple">Read More</a>
+            <a href="studies.html" class="btn read-more small ripple" aria-label="Read more about Full-time">
+              <span class="label">Read More</span>
+            </a>
           </article>
+
           <article class="card tilt">
             <h3>Library</h3>
             <p class="muted"> Books which caught my attention. </p>
-            <a href="Library.html" class="btn small ripple">Read More</a>
+            <a href="Library.html" class="btn read-more small ripple" aria-label="Read more about Full-time">
+              <span class="label">Read More</span>
+            </a>
           </article>
         </div>
       </div>
@@ -143,12 +173,23 @@
 </form>
     </section>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-      <div class="container center">
-        <p>© 2025 Martin Baar. All rights reserved.</p>
-      </div>
-    </footer>
+  <!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-inner container center">
+    <p>© 2025 Martin Baar. All rights reserved.</p>
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/in/martinbaar15" target="_blank" aria-label="LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.762 2.239 5 5 5h14c2.762 0 5-2.238 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.25c-.966 0-1.75-.783-1.75-1.75s.784-1.75 1.75-1.75 1.75.783 1.75 1.75-.784 1.75-1.75 1.75zm13.5 10.25h-3v-4.9c0-1.168-.021-2.67-1.628-2.67-1.629 0-1.879 1.272-1.879 2.584v4.986h-3v-9h2.878v1.233h.041c.401-.76 1.379-1.562 2.839-1.562 3.035 0 3.591 1.996 3.591 4.59v4.739z"/>
+        </svg>
+      </a>
+      <a href="https://www.instagram.com/martin_baar/" target="_blank" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.336 3.608 1.31.975.975 1.249 2.242 1.31 3.608.058 1.266.07 1.646.07 4.849s-.012 3.584-.07 4.85c-.061 1.366-.335 2.633-1.31 3.608-.975.975-2.242 1.249-3.608 1.31-1.266.058-1.646.07-4.85.07s-3.584-.012-4.849-.07c-1.366-.061-2.633-.335-3.608-1.31-.975-.975-1.249-2.242-1.31-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.583.07-4.849c.061-1.366.335-2.633 1.31-3.608.975-.975 2.242-1.249 3.608-1.31 1.265-.058 1.645-.07 4.849-.07zm0-2.163c-3.259 0-3.667.012-4.947.071-1.581.074-2.987.357-4.107 1.477s-1.403 2.526-1.477 4.107c-.059 1.28-.071 1.688-.071 4.947s.012 3.667.071 4.947c.074 1.581.357 2.987 1.477 4.107s2.526 1.403 4.107 1.477c1.28.059 1.688.071 4.947.071s3.667-.012 4.947-.071c1.581-.074 2.987-.357 4.107-1.477s1.403-2.526 1.477-4.107c.059-1.28.071-1.688.071-4.947s-.012-3.667-.071-4.947c-.074-1.581-.357-2.987-1.477-4.107s-2.526-1.403-4.107-1.477c-1.28-.059-1.688-.071-4.947-.071zm0 5.838a6.002 6.002 0 1 0 0 12.004 6.002 6.002 0 0 0 0-12.004zm0 9.897a3.896 3.896 0 1 1 0-7.793 3.896 3.896 0 0 1 0 7.793zm7.2-10.709a1.44 1.44 0 1 1 0-2.88 1.44 1.44 0 0 1 0 2.88z"/>
+        </svg>
+      </a>
+    </div>
   </div>
+</footer>
 </body>
 </html>
