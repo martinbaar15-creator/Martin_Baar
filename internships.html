@@ -11,12 +11,12 @@
   <div id="page" class="page">
 
     <!-- Header -->
-    <header class="site-header alt-header">
+    <header class="site-header">
       <div class="header-inner">
         <div class="logo"><a href="index.html">Martin Baar</a></div>
         <nav class="main-nav" aria-label="Main navigation">
           <ul>
-            <li><a href="fulltime.html" class="nav-link active">Full-time</a></li>
+            <li><a href="fulltime.html" class="nav-link">Full-time</a></li>
             <li><a href="internships.html" class="nav-link">Internships</a></li>
             <li><a href="projects.html" class="nav-link">Projects</a></li>
             <li><a href="certifications.html" class="nav-link">Certifications</a></li>
@@ -25,8 +25,15 @@
 
             <li class="nav-divider" aria-hidden="true"></li>
 
-            <li><a href="CV_Martin_Baar.pdf" class="nav-link" download>Download CV</a></li>
-            <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            <li><a href="CV_Martin Baar.pdf" class="nav-link" download>Download CV</a></li>
+            <li class="dropdown">
+              <button class="nav-link dropdown-toggle">Contact ▾</button>
+              <ul class="dropdown-menu">
+                <li><a href="index.html#contact">Send me a message</a></li>
+                <li><a href="https://www.instagram.com/martin_baar/" target="_blank">Check Instagram</a></li>
+                <li><a href="https://www.linkedin.com/in/martinbaar15" target="_blank">Check LinkedIn</a></li>
+              </ul>
+            </li>
             <li>
               <button id="theme-toggle" class="theme-toggle" aria-pressed="false" title="Toggle dark mode">🌙</button>
             </li>
@@ -95,18 +102,28 @@
     </div>
 
 
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox" aria-hidden="true">
-      <button class="lightbox-close" aria-label="Close">✕</button>
-      <div class="lightbox-content">
-        <button class="lb-prev" aria-label="Previous">‹</button>
+      <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <div class="lightbox-overlay" data-overlay></div>
+
+    <button class="lightbox-close" aria-label="Close" data-close>✕</button>
+
+    <div class="lightbox-content" role="dialog" aria-modal="true">
+      <!-- Row containing side arrows + image -->
+      <div class="lb-row">
+        <button class="lb-prev" aria-label="Previous" data-prev>‹</button>
+
         <div class="lb-image-wrap">
           <img id="lb-image" src="" alt="">
-          <div id="lb-caption"></div>
         </div>
-        <button class="lb-next" aria-label="Next">›</button>
+
+        <button class="lb-next" aria-label="Next" data-next>›</button>
       </div>
+
+      <!-- Progress bar (inside content so it won't be clipped) -->
+      <div id="lb-progress" class="lb-progress" aria-hidden="false"></div>
     </div>
+  </div>  
 
     
     <!-- Footer -->

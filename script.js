@@ -223,53 +223,133 @@ function initCarousels(){
 }
 
 /* --------------------------
-   Lightbox (fullscreen gallery)
+   Redesigned Lightbox (drop-in)
    -------------------------- */
-function openLightbox(items, startIndex=0){
+function openLightbox(items, startIndex = 0) {
   const lb = document.getElementById('lightbox');
+  const overlay = lb.querySelector('[data-overlay]');
   const imgEl = lb.querySelector('#lb-image');
-  const cap   = lb.querySelector('#lb-caption');
-  const prevBtn = lb.querySelector('.lb-prev');
-  const nextBtn = lb.querySelector('.lb-next');
+  const prevBtn = lb.querySelector('[data-prev]');
+  const nextBtn = lb.querySelector('[data-next]');
+  const closeBtn = lb.querySelector('[data-close]');
+  const progress = lb.querySelector('#lb-progress');
 
   let idx = startIndex;
+  let touchStartX = 0;
 
-  function show(i){
-    imgEl.src = items[i].src;
-    imgEl.alt = items[i].alt || '';
-    cap.textContent = items[i].alt || '';
-  }
+  // Clear previous progress (if any)
+  progress.innerHTML = '';
 
-  function close(){
-    lb.classList.remove('open');
-    document.body.classList.remove('lb-open');
-    document.onkeydown = null;
-  }
-
-  function prev(){ idx = (idx-1+items.length)%items.length; show(idx); }
-  function next(){ idx = (idx+1)%items.length; show(idx); }
-
-  // open
-  lb.classList.add('open');
-  document.body.classList.add('lb-open');
-  show(idx);
-
-  // controls
-  prevBtn.onclick = prev;
-  nextBtn.onclick = next;
-
-  // click outside image to close
-  lb.addEventListener('click', (e)=>{
-    if(e.target === lb) close();
+  // Create progress buttons
+  items.forEach((it, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = `Picture ${i + 1}`;
+    b.addEventListener('click', () => show(i));
+    progress.appendChild(b);
   });
 
-  // keyboard controls
-  document.onkeydown = (e)=>{
-    if(e.key==="Escape") close();
-    if(e.key==="ArrowLeft") prev();
-    if(e.key==="ArrowRight") next();
-  };
+  function updateProgress() {
+    const bs = Array.from(progress.querySelectorAll('button'));
+    bs.forEach((b, i) => b.classList.toggle('active', i === idx));
+  }
+
+  // Show image with preload & fade
+  function show(i) {
+    if (i < 0 || i >= items.length) return;
+    idx = i;
+
+    // Preload image
+    const pre = new Image();
+    pre.src = items[idx].src;
+    pre.alt = items[idx].alt || '';
+
+    // Hide current image while loading new one
+    imgEl.classList.remove('visible');
+
+    pre.onload = () => {
+      imgEl.src = pre.src;
+      imgEl.alt = pre.alt;
+      // force reflow then fade in
+      requestAnimationFrame(() => {
+        imgEl.classList.add('visible');
+      });
+    };
+
+    // If image fails, still set alt and visible so layout remains
+    pre.onerror = () => {
+      imgEl.src = items[idx].src;
+      imgEl.alt = items[idx].alt || '';
+      requestAnimationFrame(() => imgEl.classList.add('visible'));
+    };
+
+    updateProgress();
+  }
+
+  function prev() {
+    idx = (idx - 1 + items.length) % items.length;
+    show(idx);
+  }
+
+  function next() {
+    idx = (idx + 1) % items.length;
+    show(idx);
+  }
+
+  function close() {
+    // remove class and restore body scroll
+    lb.classList.remove('open');
+    document.body.classList.remove('lb-open');
+
+    // remove event listeners we attached (cleanup)
+    document.removeEventListener('keydown', onKeyDown);
+    overlay.removeEventListener('click', onOverlayClick);
+    lb.removeEventListener('touchstart', onTouchStart);
+    lb.removeEventListener('touchend', onTouchEnd);
+    prevBtn.removeEventListener('click', prev);
+    nextBtn.removeEventListener('click', next);
+    closeBtn.removeEventListener('click', close);
+  }
+
+  // Event handler references for removal later
+  function onKeyDown(e) {
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') prev();
+    if (e.key === 'ArrowRight') next();
+  }
+  function onOverlayClick(e) {
+    // close only when clicking the overlay itself (not content)
+    if (e.target === overlay) close();
+  }
+  function onTouchStart(e) {
+    touchStartX = e.touches[0] ? e.touches[0].clientX : 0;
+  }
+  function onTouchEnd(e) {
+    const touchEndX = e.changedTouches[0] ? e.changedTouches[0].clientX : 0;
+    const diff = touchEndX - touchStartX;
+    if (diff > 60) prev();
+    if (diff < -60) next();
+  }
+
+  // Open
+  lb.classList.add('open');
+  document.body.classList.add('lb-open');
+
+  // Add listeners
+  prevBtn.addEventListener('click', prev);
+  nextBtn.addEventListener('click', next);
+  closeBtn.addEventListener('click', close);
+  overlay.addEventListener('click', onOverlayClick);
+  document.addEventListener('keydown', onKeyDown);
+
+  // Touch support on the lightbox container (swipe)
+  lb.addEventListener('touchstart', onTouchStart, { passive: true });
+  lb.addEventListener('touchend', onTouchEnd, { passive: true });
+
+  // show initial
+  show(idx);
 }
+
 
    /* --------------------------
    Stars rating library

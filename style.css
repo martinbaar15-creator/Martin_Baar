@@ -709,88 +709,184 @@ body.dark {
   -webkit-text-fill-color: transparent;
 }
 
-/* Lightbox container */
+/* --- Lightbox base and layout --- */
 .lightbox {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   display: none;
-  align-items: center;
   justify-content: center;
-  background: rgba(0,0,0,0.9);
+  align-items: center;
+  background: rgba(42, 20, 1, 0.406);
+  backdrop-filter: blur(12px);
   z-index: 9999;
+  overflow: hidden; /* Prevent scrolling */
 }
 
-/* Open state */
+/* show */
 .lightbox.open {
   display: flex;
-  animation: lightboxFade 250ms ease;
 }
 
-@keyframes lightboxFade {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+/* blurred background overlay */
+.lightbox-overlay {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(14px);
+  background: rgba(0,0,0,0.25);
+  z-index: 1;
 }
 
-/* Content wrapper */
+/* Close button top-right */
+.lightbox-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  z-index: 6;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  padding: 0.45rem 0.7rem;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* main content: column so progress sits below image */
 .lightbox-content {
   position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  max-width: 100vw;
+  max-height: 100vh;
+  padding: 2.5rem 1rem; /* reserve space top & bottom */
+  box-sizing: border-box;
+  pointer-events: none; /* default: let internal elements handle pointer events */
+}
+
+/* row with arrows and image */
+.lb-row {
+  width: 100%;
+  flex: 1 1 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 90vw;
-  max-height: 90vh;
+  pointer-events: auto; /* enable pointer events for children */
+  box-sizing: border-box;
 }
 
-/* Image */
-#lb-image {
-  max-width: 85vw;
-  max-height: 85vh;
-  object-fit: contain
-}
-  
-/* Controls */
-.lightbox-close,
-.lb-prev,
-.lb-next {
-  position: absolute;
-  background: rgba(0,0,0,0.6);
-  border: none;
-  color: #fff;
-  font-size: 2rem;
-  padding: 0.4rem 0.8rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.lightbox-close:hover,
-.lb-prev:hover,
-.lb-next:hover {
-  background: #ffffff33;
-}
-
-/* Prev / Next buttons (fixed on screen sides) */
+/* side nav buttons */
 .lb-prev, .lb-next {
   position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
+  z-index: 5;
+  background: rgba(0,0,0,0.55);
   border: none;
   color: #fff;
-  font-size: 2.5rem;
-  padding: 0.6rem 1rem;
-  border-radius: 8px;
+  font-size: 2.6rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background 0.3s;
-  z-index: 10000; /* make sure they're above everything */
+  margin: 0 0.6rem;
+  transition: background 0.2s;
+  user-select: none;
 }
 
-.lb-prev:hover, .lb-next:hover {
-  background: rgba(255,255,255,0.2);
+/* gauche / droite */
+.lb-prev { left: 1rem; }
+.lb-next { right: 1rem; }
+
+/* larger tap targets on mobile */
+@media (max-width: 640px) {
+  .lb-prev, .lb-next { font-size: 2.2rem; padding: 0.7rem 1.1rem; }
 }
 
-.lb-prev { left: 20px; }
-.lb-next { right: 20px; }
+/* image wrapper - ensures image never exceeds available space */
+.lb-image-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 80vw;
+  /* Deduct space for top padding and progress bar (approx) to avoid clipping */
+  max-height: calc(100vh - 160px);
+  width: auto;
+  box-sizing: border-box;
+}
+
+/* image itself */
+#lb-image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 0;
+  transform: scale(0.995);
+}
+
+/* visible state when loaded */
+#lb-image.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* progress bar (text buttons) */
+.lb-progress {
+  margin-top: 18px;
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  z-index: 6;
+  pointer-events: auto;
+  max-width: 95vw;
+}
+
+/* progress items */
+.lb-progress button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 0.95rem;
+  padding: 0.25rem 0.45rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.18s, color 0.18s;
+}
+
+/* hover */
+.lb-progress button:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+/* active (chocolate dark brown) */
+.lb-progress button.active {
+  background: #3e2723;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* prevent body scroll when lightbox open */
+body.lb-open {
+  position: fixed;
+  width: 100%;
+}
+
+/* small fade-in of lightbox content */
+@keyframes lb-open-zoom {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+.lightbox.open .lightbox-content { animation: lb-open-zoom 300ms ease both; }
 
 
 

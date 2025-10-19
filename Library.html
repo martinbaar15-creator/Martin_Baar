@@ -11,23 +11,32 @@
   <div id="page" class="page">
 
     <!-- Header -->
-    <header class="site-header alt-header">
+    <header class="site-header">
       <div class="header-inner">
         <div class="logo"><a href="index.html">Martin Baar</a></div>
         <nav class="main-nav" aria-label="Main navigation">
           <ul>
-            <li><a href="fulltime.html" class="nav-link active">Full-time</a></li>
+            <li><a href="fulltime.html" class="nav-link">Full-time</a></li>
             <li><a href="internships.html" class="nav-link">Internships</a></li>
             <li><a href="projects.html" class="nav-link">Projects</a></li>
             <li><a href="certifications.html" class="nav-link">Certifications</a></li>
             <li><a href="studies.html" class="nav-link">Education</a></li>
             <li><a href="Library.html" class="nav-link">Library</a></li>
 
-            <li class="nav-divider"></li>
+            <li class="nav-divider" aria-hidden="true"></li>
 
-            <li><a href="CV_Martin_Baar.pdf" download>Download CV</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
-            <li><button id="theme-toggle" class="theme-toggle">🌙</button></li>
+            <li><a href="CV_Martin Baar.pdf" class="nav-link" download>Download CV</a></li>
+            <li class="dropdown">
+              <button class="nav-link dropdown-toggle">Contact ▾</button>
+              <ul class="dropdown-menu">
+                <li><a href="index.html#contact">Send me a message</a></li>
+                <li><a href="https://www.instagram.com/martin_baar/" target="_blank">Check Instagram</a></li>
+                <li><a href="https://www.linkedin.com/in/martinbaar15" target="_blank">Check LinkedIn</a></li>
+              </ul>
+            </li>
+            <li>
+              <button id="theme-toggle" class="theme-toggle" aria-pressed="false" title="Toggle dark mode">🌙</button>
+            </li>
           </ul>
         </nav>
       </div>
