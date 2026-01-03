@@ -244,7 +244,7 @@ function openLightbox(items, startIndex = 0) {
   items.forEach((it, i) => {
     const b = document.createElement('button');
     b.type = 'button';
-    b.textContent = `Picture ${i + 1}`;
+    b.textContent = `  ${i + 1}`;
     b.addEventListener('click', () => show(i));
     progress.appendChild(b);
   });
